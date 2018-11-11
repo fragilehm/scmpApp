@@ -108,13 +108,11 @@ class ViewController: UIViewController {
         ])
     }
     @objc func loginDidPress(_ sender: UIButton) {
-        //print("did press")
         checkCredentials()
     }
     private func checkCredentials() {
         if let email = self.emailTextField.text, let password = passwordTextField.text {
             if isValidEmail(string: email) && password != "" {
-                //showMainViewController(with: "")
                 self.activityIndicator.startAnimating()
                 postRequest(email: email, password: password)
             } else {
@@ -135,7 +133,6 @@ class ViewController: UIViewController {
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {return}
         print(httpBody)
         request.httpBody = httpBody
-        //print(request)
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
